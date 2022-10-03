@@ -1,0 +1,36 @@
+<div class="form-card card">
+    <form [formGroup]="authForm" (submit)="onSubmit()">
+        <app-input
+            [control]="authForm.get('username')"
+            [label]="'Username'"
+        ></app-input>
+        <app-input
+            [control]="authForm.controls.password"
+            [label]="'Password'"
+            [inputType]="'password'"
+        ></app-input>
+
+        <div *ngIf="authForm.errors" class="help is-danger">
+            <p *ngIf="authForm.errors.credentials">
+                Invalid username or password
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button
+                [disabled]="authForm.invalid"
+                class="button is-success"
+                type="submit"
+            >
+                Signin
+            </button>
+            <button
+                class="button is-warning"
+                type="button"
+                (click)="onResetClick()"
+            >
+                Reset
+            </button>
+        </div>
+    </form>
+</div>

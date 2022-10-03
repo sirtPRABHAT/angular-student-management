@@ -1,0 +1,27 @@
+<div class="box form-container">
+    <p class="title is-3">Add Result</p>
+    <form [formGroup]="addResultForm" (submit)="onFormSubmit()">
+        <app-input [control]="addResultForm.get('rollno')" [label]="'Roll No.'">
+        </app-input>
+        <app-input [control]="addResultForm.get('name')" [label]="'Name'">
+        </app-input>
+        <app-input
+            [control]="addResultForm.get('dateOfBirth')"
+            [label]="'Date Of Birth'"
+        >
+        </app-input>
+        <app-input [control]="addResultForm.get('score')" [label]="'Score'">
+        </app-input>
+
+        <div class="buttons">
+            <button
+                [disabled]="addResultForm.invalid"
+                class="button is-link"
+                type="submit"
+            >
+                Add Result
+            </button>
+            <button class="button is-warning" type="button">Clear</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+}
+
+.teacher-card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 20px;
+}
+
+.teacher-card p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

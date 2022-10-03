@@ -1,0 +1,87 @@
+<button class="button is-primary" (click)="onAddResultClick()">
+    Add New Result
+</button>
+
+<div class="card table-container">
+    <table class="table is-fullwidth is-striped is-hoverable is-scrollable">
+        <thead>
+            <tr>
+                <th>Roll No.</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Score</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of dataSource | async">
+                <th>{{ student.rollno }}</th>
+                <td>{{ student.name }}</td>
+                <td>{{ student.dateOfBirth | date }}</td>
+                <td>{{ student.score }}</td>
+                <td>
+                    <span
+                        (click)="openModal(student)"
+                        class="icon has-text-info"
+                    >
+                        <i class="fas fa-pen"></i>
+                    </span>
+                    <span
+                        (click)="onDeleteButtonClicked(student.rollno)"
+                        class="icon has-text-danger"
+                    >
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div [ngClass]="{ 'is-active': isModalActive }" class="modal is-active">
+    <div class="modal-background" (click)="closeModal()"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form
+                [formGroup]="updateResultForm"
+                (submit)="onUpdateResultClick()"
+            >
+                <app-input
+                    [control]="updateResultForm.get('rollno')"
+                    [label]="'Roll No.'"
+                >
+                </app-input>
+                <app-input
+                    [control]="updateResultForm.get('name')"
+                    [label]="'Name'"
+                >
+                </app-input>
+                <app-input
+                    [control]="updateResultForm.get('dateOfBirth')"
+                    [label]="'Date Of Birth'"
+                >
+                </app-input>
+                <app-input
+                    [control]="updateResultForm.get('score')"
+                    [label]="'Score'"
+                >
+                </app-input>
+
+                <div class="buttons">
+                    <button
+                        [disabled]="updateResultForm.invalid"
+                        class="button is-link"
+                        type="submit"
+                    >
+                        Update Result
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button
+        (click)="closeModal()"
+        class="modal-close is-large"
+        aria-label="close"
+    ></button>
+</div>

@@ -1,0 +1,33 @@
+/* .modal-card {
+    padding: 20px;
+    width: 500px;
+    height: 400px;
+} */
+
+.table-container {
+    width: 80%;
+    margin: auto;
+    border: 2px solid rgba(196, 192, 192, 0.692);
+}
+
+/* .table.is-scrollable tbody {
+    overflow-y: scroll;
+    width: auto;
+    position: absolute;
+} */
+
+.icon {
+    margin: 0 10px;
+}
+
+.icon :hover {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+}
+
+.button {
+    margin-top: 10px;
+}

@@ -8,9 +8,15 @@
     height: 200px;
     position: relative;
     margin: 20px;
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(0, 225, 255, 0.365),
+        rgba(0, 0, 255, 0.498)
+    );
 }
 
 .teacher-card p {
+    color: white;
     position: absolute;
     top: 50%;
     left: 50%;

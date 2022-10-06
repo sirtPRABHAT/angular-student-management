@@ -7,9 +7,10 @@
             class="input custom-input"
             [ngClass]="{ 'is-danger': showErrors() }"
             [type]="inputType"
+            [readOnly]="isDisabled"
         />
         <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
+            <i [class]="icon"></i>
         </span>
     </div>
 

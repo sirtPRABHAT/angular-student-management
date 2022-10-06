@@ -1,0 +1,30 @@
+<div class="box form-container">
+    <p class="title is-3">Get Result</p>
+    <form [formGroup]="getResultForm" (submit)="onFormSubmit()">
+        <app-input
+            [control]="getResultForm.get('rollno')"
+            [label]="'Roll No.'"
+            [inputType]="'number'"
+            icon="fas fa-id-badge"
+        >
+        </app-input>
+        <app-input
+            [control]="getResultForm.get('dateOfBirth')"
+            [label]="'Date Of Birth'"
+            inputType="date"
+            icon="fas fa-calendar"
+        >
+        </app-input>
+
+        <div class="buttons">
+            <button
+                [disabled]="getResultForm.invalid"
+                class="button is-link"
+                type="submit"
+            >
+                Show Result
+            </button>
+            <button class="button is-warning" type="button">Clear</button>
+        </div>
+    </form>
+</div>

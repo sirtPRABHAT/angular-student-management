@@ -9,6 +9,8 @@ import { TeacherModule } from './teacher/teacher.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
+import { StudentModule } from './student/student.module'
+import { DatePipe } from '@angular/common'
 
 @NgModule({
     declarations: [AppComponent, HomeComponent],
@@ -19,6 +21,7 @@ import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
         TeacherModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        StudentModule,
     ],
     providers: [
         {
@@ -26,6 +29,7 @@ import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
             useClass: AuthHttpInterceptor,
             multi: true,
         },
+        DatePipe,
     ],
     bootstrap: [AppComponent],
 })

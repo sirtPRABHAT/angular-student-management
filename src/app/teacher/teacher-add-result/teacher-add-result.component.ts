@@ -1,8 +1,7 @@
+import { DatePipe } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { BehaviorSubject } from 'rxjs'
-import { StudentResult } from '../interfaces'
 import { TeacherService } from '../teacher.service'
 
 @Component({
@@ -20,18 +19,23 @@ export class TeacherAddResultComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private teacherService: TeacherService
+        private teacherService: TeacherService,
+        private datePipe: DatePipe
     ) {}
 
     ngOnInit(): void {}
 
     onFormSubmit() {
         if (this.addResultForm.invalid) return
+
         this.teacherService
             .addStudentResult({
                 rollno: Number.parseInt(this.addResultForm.get('rollno').value),
                 name: this.addResultForm.get('name').value,
-                dateOfBirth: this.addResultForm.get('dateOfBirth').value,
+                dateOfBirth: this.datePipe.transform(
+                    this.addResultForm.get('dateOfBirth').value,
+                    'MM-dd-YYYY'
+                ),
                 score: Number.parseInt(this.addResultForm.get('score').value),
             })
             .subscribe({

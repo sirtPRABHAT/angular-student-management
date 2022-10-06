@@ -8,8 +8,10 @@ import { FormControl } from '@angular/forms'
 })
 export class InputComponent implements OnInit {
     @Input() control: FormControl
-    @Input() label: String
-    @Input() inputType = 'text'
+    @Input() label: string
+    @Input() inputType: string = 'text'
+    @Input() icon: string
+    @Input() isDisabled: boolean = false
 
     constructor() {}
 

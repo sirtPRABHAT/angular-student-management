@@ -1,20 +1,10 @@
-/* .modal-card {
-    padding: 20px;
-    width: 500px;
-    height: 400px;
-} */
-
 .table-container {
     width: 80%;
     margin: auto;
     border: 2px solid rgba(196, 192, 192, 0.692);
-}
-
-/* .table.is-scrollable tbody {
+    max-height: 400px;
     overflow-y: scroll;
-    width: auto;
-    position: absolute;
-} */
+}
 
 .icon {
     margin: 0 10px;
@@ -28,6 +18,11 @@ table {
     width: 100%;
 }
 
-.button {
+.addButton {
+    margin: 10px 0px;
+    left: 73%;
+}
+
+.modalButton {
     margin-top: 10px;
 }

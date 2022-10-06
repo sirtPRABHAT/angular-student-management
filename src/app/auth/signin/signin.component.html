@@ -2,12 +2,14 @@
     <form [formGroup]="authForm" (submit)="onSubmit()">
         <app-input
             [control]="authForm.get('username')"
-            [label]="'Username'"
+            [label]="'Email'"
+            icon="fas fa-envelope"
         ></app-input>
         <app-input
             [control]="authForm.controls.password"
             [label]="'Password'"
             [inputType]="'password'"
+            icon="fas fa-lock"
         ></app-input>
 
         <div *ngIf="authForm.errors" class="help is-danger">

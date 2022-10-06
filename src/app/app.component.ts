@@ -1,3 +1,4 @@
+import { Location } from '@angular/common'
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { BehaviorSubject } from 'rxjs'
@@ -13,16 +14,30 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authService: AuthServiceService
+        private authService: AuthServiceService,
+        private _location: Location
     ) {
         this.signedin$ = this.authService.signedin$
     }
 
     ngOnInit() {
-        this.authService.checkAuth().subscribe(() => {})
+        this.authService.checkAuth().subscribe({
+            next: () => {},
+            error: (error) => {
+                this.authService.signedin$.next(false)
+            },
+        })
     }
 
     isTeacherUrl() {
         return this.router.url.startsWith('/teacher')
+    }
+
+    isHomeUrl() {
+        return this.router.url == '/'
+    }
+
+    onBackPressed() {
+        this._location.back()
     }
 }

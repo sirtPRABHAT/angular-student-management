@@ -4,7 +4,7 @@
     aria-label="main navigation"
 >
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://www.nagarro.com/en">
+        <a class="navbar-item" routerLink="/">
             <img
                 src="https://www.nagarro.com/hubfs/NagarroWebsiteRedesign-Aug2020/Assets/Images/Nagarro%20green%20logo%20with%20title_opt.svg"
                 width="112"
@@ -23,6 +23,10 @@
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </a>
+    </div>
+
+    <div class="navbar-menu nav-heading">
+        <h2 class="title is-3">Student Management</h2>
     </div>
 
     <ng-container *ngIf="isTeacherUrl()">
@@ -69,5 +73,13 @@
         </div>
     </ng-container>
 </nav>
+
+<button
+    *ngIf="!isHomeUrl()"
+    class="button is-link is-small back-button"
+    (click)="onBackPressed()"
+>
+    <strong>&#x2190; Go Back</strong>
+</button>
 
 <router-outlet></router-outlet>

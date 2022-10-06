@@ -21,8 +21,9 @@ interface SigninCredentials {
     providedIn: 'root',
 })
 export class AuthServiceService {
-    rootUrl = 'http://localhost:4201/v1'
-    signedin$ = new BehaviorSubject(false)
+    rootUrl = 'https://student-management-node.herokuapp.com/v1'
+    // rootUrl = 'http://localhost:4201/v1'
+    signedin$ = new BehaviorSubject(null)
 
     constructor(private http: HttpClient) {}
 
@@ -31,7 +32,12 @@ export class AuthServiceService {
             .get<CheckAuthResponse>(`${this.rootUrl}/teacher/is-loggedin`)
             .pipe(
                 tap(({ authenticated }) => {
-                    this.signedin$.next(authenticated)
+                    console.log('check', authenticated)
+                    if (authenticated) {
+                        this.signedin$.next(authenticated)
+                    } else {
+                        this.signedin$.next(false)
+                    }
                 })
             )
     }

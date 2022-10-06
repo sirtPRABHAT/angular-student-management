@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { Route, Router } from '@angular/router'
+import { Router } from '@angular/router'
 import { TeacherService } from '../teacher.service'
 import { StudentResult } from '../interfaces'
 import { BehaviorSubject } from 'rxjs'
+import { DatePipe } from '@angular/common'
 
 @Component({
     selector: 'app-teacher-home',
@@ -12,7 +13,7 @@ import { BehaviorSubject } from 'rxjs'
 })
 export class TeacherHomeComponent implements OnInit {
     isModalActive: boolean = false
-    dataSource: BehaviorSubject<Array<StudentResult>>
+    dataSource$: BehaviorSubject<Array<StudentResult>>
     updateResultForm = new FormGroup({
         rollno: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required]),
@@ -21,15 +22,16 @@ export class TeacherHomeComponent implements OnInit {
     })
 
     constructor(
+        private datePipe: DatePipe,
         private teacherService: TeacherService,
         private router: Router
     ) {
-        this.dataSource = this.teacherService.dataSource
+        this.dataSource$ = this.teacherService.dataSource$
     }
 
     ngOnInit() {
         this.teacherService.getResults().subscribe((data) => {
-            this.dataSource.next(data)
+            this.dataSource$.next(data)
         })
     }
 
@@ -42,7 +44,7 @@ export class TeacherHomeComponent implements OnInit {
         this.updateResultForm.controls.rollno.setValue(data.rollno.toString())
         this.updateResultForm.controls.name.setValue(data.name.toString())
         this.updateResultForm.controls.dateOfBirth.setValue(
-            data.dateOfBirth.toString()
+            this.datePipe.transform(data.dateOfBirth.toString(), 'YYYY-MM-dd')
         )
         this.updateResultForm.controls.score.setValue(data.score.toString())
     }
@@ -58,7 +60,10 @@ export class TeacherHomeComponent implements OnInit {
                     this.updateResultForm.get('rollno').value
                 ),
                 name: this.updateResultForm.get('name').value,
-                dateOfBirth: this.updateResultForm.get('dateOfBirth').value,
+                dateOfBirth: this.datePipe.transform(
+                    this.updateResultForm.get('dateOfBirth').value,
+                    'MM-dd-YYYY'
+                ),
                 score: Number.parseInt(
                     this.updateResultForm.get('score').value
                 ),

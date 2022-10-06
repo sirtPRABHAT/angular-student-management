@@ -1,16 +1,32 @@
 <div class="box form-container">
     <p class="title is-3">Add Result</p>
     <form [formGroup]="addResultForm" (submit)="onFormSubmit()">
-        <app-input [control]="addResultForm.get('rollno')" [label]="'Roll No.'">
+        <app-input
+            [control]="addResultForm.get('rollno')"
+            [label]="'Roll No.'"
+            inputType="number"
+            icon="fas fa-id-badge"
+        >
         </app-input>
-        <app-input [control]="addResultForm.get('name')" [label]="'Name'">
+        <app-input
+            [control]="addResultForm.get('name')"
+            [label]="'Name'"
+            icon="fas fa-user"
+        >
         </app-input>
         <app-input
             [control]="addResultForm.get('dateOfBirth')"
             [label]="'Date Of Birth'"
+            inputType="date"
+            icon="fas fa-calendar"
         >
         </app-input>
-        <app-input [control]="addResultForm.get('score')" [label]="'Score'">
+        <app-input
+            [control]="addResultForm.get('score')"
+            [label]="'Score'"
+            inputType="number"
+            icon="fas fa-star"
+        >
         </app-input>
 
         <div class="buttons">

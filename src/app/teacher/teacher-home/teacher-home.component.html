@@ -1,5 +1,8 @@
-<button class="button is-primary" (click)="onAddResultClick()">
-    Add New Result
+<button
+    class="button is-success is-normal addButton"
+    (click)="onAddResultClick()"
+>
+    Add Result
 </button>
 
 <div class="card table-container">
@@ -14,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let student of dataSource | async">
+            <tr *ngFor="let student of dataSource$ | async">
                 <th>{{ student.rollno }}</th>
                 <td>{{ student.name }}</td>
                 <td>{{ student.dateOfBirth | date }}</td>
@@ -49,28 +52,36 @@
                 <app-input
                     [control]="updateResultForm.get('rollno')"
                     [label]="'Roll No.'"
+                    inputType="number"
+                    icon="fas fa-id-badge"
+                    isDisabled="true"
                 >
                 </app-input>
                 <app-input
                     [control]="updateResultForm.get('name')"
                     [label]="'Name'"
+                    icon="fas fa-user"
                 >
                 </app-input>
                 <app-input
                     [control]="updateResultForm.get('dateOfBirth')"
                     [label]="'Date Of Birth'"
+                    icon="fas fa-calendar"
+                    inputType="date"
                 >
                 </app-input>
                 <app-input
                     [control]="updateResultForm.get('score')"
                     [label]="'Score'"
+                    inputType="number"
+                    icon="fas fa-star"
                 >
                 </app-input>
 
                 <div class="buttons">
                     <button
                         [disabled]="updateResultForm.invalid"
-                        class="button is-link"
+                        class="button is-link modalButton"
                         type="submit"
                     >
                         Update Result

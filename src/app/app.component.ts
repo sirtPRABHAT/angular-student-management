@@ -29,6 +29,10 @@ export class AppComponent {
         })
     }
 
+    onBackPressed() {
+        this._location.back()
+    }
+
     isTeacherUrl() {
         return this.router.url.startsWith('/teacher')
     }
@@ -37,7 +41,10 @@ export class AppComponent {
         return this.router.url == '/'
     }
 
-    onBackPressed() {
-        this._location.back()
+    isSigninUrl() {
+        return this.router.url == '/teacher/signin'
+    }
+    isSignupUrl() {
+        return this.router.url == '/teacher/signup'
     }
 }

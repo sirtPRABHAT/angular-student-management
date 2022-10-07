@@ -54,4 +54,8 @@ export class StudentHomeComponent implements OnInit {
                 },
             })
     }
+
+    onResetClick() {
+        this.getResultForm.reset()
+    }
 }

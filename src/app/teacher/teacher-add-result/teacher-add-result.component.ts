@@ -47,4 +47,8 @@ export class TeacherAddResultComponent implements OnInit {
                 },
             })
     }
+
+    onResetClick() {
+        this.addResultForm.reset()
+    }
 }

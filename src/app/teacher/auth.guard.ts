@@ -30,7 +30,6 @@ export class AuthGuard implements CanActivate {
             skipWhile((value) => value === null),
             take(1),
             tap((authenticated) => {
-                console.error('authenticated')
                 if (!authenticated) {
                     this.router.navigateByUrl('/teacher/signin')
                 }

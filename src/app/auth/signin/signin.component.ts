@@ -45,5 +45,7 @@ export class SigninComponent implements OnInit {
         })
     }
 
-    onResetClick() {}
+    onResetClick() {
+        this.authForm.reset()
+    }
 }

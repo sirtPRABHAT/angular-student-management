@@ -8,8 +8,8 @@ import { StudentResultResposne, StudentResult } from './interfaces'
     providedIn: 'root',
 })
 export class TeacherService {
-    rootUrl = 'https://student-management-node.herokuapp.com/v1'
-    //rootUrl = 'http://localhost:4201/v1'
+    // rootUrl = 'https://student-management-node.herokuapp.com/v1'
+    rootUrl = 'http://localhost:4201/v1'
     studentResultArray: StudentResult[] = []
     dataSource$ = new BehaviorSubject(this.studentResultArray)
 
